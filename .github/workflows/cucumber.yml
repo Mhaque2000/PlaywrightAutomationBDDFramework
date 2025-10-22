@@ -2,11 +2,9 @@ name: Cucumber Tests
 
 on:
   push:
-    branches:
-      - main  # or the branch you want to monitor
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   test:
@@ -24,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
       - name: Run Cucumber Tests
         run: npm run cucumber
 
@@ -31,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-report
-          path: test-results/report/cucumber-report.html
+          path: test-result/report/cucumber-report.html
