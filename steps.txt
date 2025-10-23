@@ -88,3 +88,48 @@ report.generate({
         }
     }
 });
+
+github actions setting for browser reporting ->
+name: Cucumber Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4️⃣ Install Playwright browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      # 5️⃣ Run Cucumber tests (clean + execute + posttest)
+      - name: Run Cucumber Tests
+        run: npm test
+
+      # 6️⃣ Deploy the generated HTML report to GitHub Pages
+      - name: Deploy Cucumber Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./test-results/report_advanced
+          publish_branch: gh-pages
+
