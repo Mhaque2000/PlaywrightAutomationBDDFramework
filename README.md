@@ -8,7 +8,7 @@ This project is a **Playwright + Cucumber BDD Automation Framework** built using
 
 ### 1. Initialize the project
 
-```bash
+
 npm init playwright@latest
 npm install --save-dev @cucumber/cucumber ts-node multiple-cucumber-html-reporter mkdirp rimraf
 2. Project Structure
