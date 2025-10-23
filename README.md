@@ -7,12 +7,12 @@ This project is a **Playwright + Cucumber BDD Automation Framework** built using
 ## 📦 Project Setup
 
 ### 1. Initialize the project
-
+```
 npm init playwright@latest
 npm install --save-dev @cucumber/cucumber ts-node multiple-cucumber-html-reporter mkdirp rimraf
-
+```
 ### 2. Project Structure
-```bash
+```
 project-root/
 ├─ src/
 │  └─ test/
@@ -27,7 +27,7 @@ project-root/
 ```
 ## ⚙ Configuration
 ### 1. cucumber.json
-```bash
+```
 {
   "default": {
     "paths": ["./src/test/**/features"],
@@ -43,7 +43,7 @@ project-root/
 Note: Cucumber runs JS files, so ts-node is required to compile TypeScript on the fly.
 
 ### 2. tsconfig.json
-```bash
+```
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -52,7 +52,7 @@ Note: Cucumber runs JS files, so ts-node is required to compile TypeScript on th
 }
 ```
 ### 3. VS Code Cucumber Settings (Optional)
-```bash
+```
 "cucumber.features": ["src/test/feature/*.feature"],
 "cucumber.glue": ["src/test/steps/*.ts"],
 "cucumberautocomplete.steps": ["src/test/steps/**/*.ts"],
@@ -62,7 +62,7 @@ Note: Cucumber runs JS files, so ts-node is required to compile TypeScript on th
 ## 🧪 Hooks & Screenshots
 
 Add a hooks.ts file to capture screenshots on failure:
-```bash
+```
 After(async function({ pickle, result }) {
   if (result?.status === Status.FAILED) {
     const image = await pageFixture.page.screenshot({
@@ -77,17 +77,17 @@ After(async function({ pickle, result }) {
 ```
 ## 📊 Reporting
 ### 1. Simple HTML Report
-```bash
+```=
 "format": ["html:test-results/report/cucumber-report.html"]
 ```
 ### 2. Advanced Multiple Cucumber HTML Report
 
 Install:
-```bash
+```
 npm install --save-dev multiple-cucumber-html-reporter
 ```
 Create reportGenerate.ts:
-```bash
+```
 const report = require('multiple-cucumber-html-reporter');
 const path = require('path');
 
@@ -123,7 +123,7 @@ This runs pretest (clean), executes Cucumber tests, and generates reports automa
 
 ## ⚙ GitHub Actions Workflow
 This CI/CD pipeline runs tests and deploys the report to GitHub Pages:
-```bash
+```
 name: Cucumber Tests
 
 on:
