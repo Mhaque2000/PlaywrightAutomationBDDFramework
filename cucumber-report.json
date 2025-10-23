@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 35714986
+              "duration": 37399687
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 331140607
+              "duration": 249636865
             },
             "embeddings": [
               {
@@ -46,7 +46,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 520524497
+              "duration": 464818940
             },
             "embeddings": [
               {
@@ -65,7 +65,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 129331097
+              "duration": 117816915
             },
             "embeddings": [
               {
@@ -84,7 +84,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 160890132
+              "duration": 212863578
             },
             "embeddings": [
               {
@@ -103,7 +103,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48641672
+              "duration": 65263409
             },
             "embeddings": [
               {
@@ -117,7 +117,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6975463
+              "duration": 9595199
             }
           }
         ],
@@ -147,7 +147,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36797719
+              "duration": 31944459
             }
           },
           {
@@ -160,7 +160,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 142423565
+              "duration": 110695022
             },
             "embeddings": [
               {
@@ -179,7 +179,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 433458732
+              "duration": 372758987
             },
             "embeddings": [
               {
@@ -198,7 +198,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 119915004
+              "duration": 130031255
             },
             "embeddings": [
               {
@@ -217,7 +217,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1012239981
+              "duration": 963183601
             },
             "embeddings": [
               {
@@ -236,7 +236,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48185867
+              "duration": 50850702
             },
             "embeddings": [
               {
@@ -250,7 +250,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4592490
+              "duration": 5306448
             }
           }
         ],
@@ -269,7 +269,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 33399647
+              "duration": 36806900
             }
           },
           {
@@ -282,7 +282,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 146137304
+              "duration": 106498258
             },
             "embeddings": [
               {
@@ -301,7 +301,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 102598410
+              "duration": 103114967
             },
             "embeddings": [
               {
@@ -320,7 +320,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48588588
+              "duration": 45637509
             },
             "embeddings": [
               {
@@ -334,7 +334,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3892630
+              "duration": 5259015
             }
           }
         ],
@@ -353,7 +353,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 23924912
+              "duration": 28765343
             }
           },
           {
@@ -366,7 +366,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 170573363
+              "duration": 220004832
             },
             "embeddings": [
               {
@@ -385,7 +385,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 84066740
+              "duration": 104074679
             },
             "embeddings": [
               {
@@ -404,7 +404,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48991540
+              "duration": 40200128
             },
             "embeddings": [
               {
@@ -418,7 +418,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3682925
+              "duration": 4881139
             }
           }
         ],
