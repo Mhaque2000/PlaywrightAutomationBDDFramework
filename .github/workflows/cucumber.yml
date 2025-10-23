@@ -11,28 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: npm install
 
+      # 4️⃣ Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install
 
+      # 5️⃣ Run Cucumber tests (clean + execute + posttest)
       - name: Run Cucumber Tests
-        run: npm run cucumber
+        run: npm test
 
-      - name: Run Generate Report
-        run: npm run generate-report
-
-      - name: Upload Multiple HTML Cucumber Report
-        uses: actions/upload-artifact@v4
+      # 6️⃣ Deploy the generated HTML report to GitHub Pages
+      - name: Deploy Cucumber Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
         with:
-          name: multiple-html-cucumber-report
-          path: test-results/report_advanced
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./test-results/report_advanced
+          publish_branch: gh-pages

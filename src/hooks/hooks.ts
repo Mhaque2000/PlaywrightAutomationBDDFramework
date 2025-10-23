@@ -14,13 +14,13 @@ Before(async function(){
     page = await context.newPage();
     pageFixture.page = page;
 })
-AfterStep(async function({pickle, result}){
+AfterStep(async function({pickle, result, testStepId}){
     //Screenshot only for failure
     // if(result?.status == Status.FAILED){
     //     const image = await pageFixture.page.screenshot({path: `./test-results/screenshots/${pickle.name}.png`, type:'png'})
     //     this.attach(image, 'image/png')
     // }
-    const image = await pageFixture.page.screenshot({path: `./test-results/screenshots/${pickle.name}.png`, type:'png'})
+    const image = await pageFixture.page.screenshot({path: `./test-results/screenshots/${testStepId}.png`, type:'png'})
     this.attach(image, 'image/png')
 })
 After(async function(){

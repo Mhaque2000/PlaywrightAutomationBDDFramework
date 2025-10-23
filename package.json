@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cucumber": "cucumber-js",
-    "generate-report": "npx ts-node src/helper/reportGenerate.ts"
+    "clean:test": "rimraf test-results && mkdirp test-results",
+    "generate:report": "npx ts-node ./src/helper/reportGenerate.ts",
+    "pretest": "npm run clean:test",
+    "posttest": "npm run generate:report",
+    "execute:script": "cucumber-js test",
+    "test": "npm run execute:script || posttest"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +19,9 @@
     "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.9.1",
+    "mkdirp": "^3.0.1",
     "multiple-cucumber-html-reporter": "^3.9.3",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2"
   }
 }
