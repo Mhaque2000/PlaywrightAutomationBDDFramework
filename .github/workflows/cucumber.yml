@@ -28,8 +28,11 @@ jobs:
       - name: Run Cucumber Tests
         run: npm run cucumber
 
-      - name: Upload Cucumber HTML Report
+      - name: Run Generate Report
+        run: npm run generate-report
+
+      - name: Upload Multiple HTML Cucumber Report
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-report
-          path: test-results/report/cucumber-report.html
+          name: multiple-html-cucumber-report
+          path: test-results/report_advanced

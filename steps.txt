@@ -52,3 +52,39 @@ adding hooks -> cucumber.json
 
 cucumber HTML report -> cucumber.json
 "format": ["html:test-result/report/cucumber-report.html"]
+attaching screenshot ->
+After(async function({pickle, result}){
+    //Screenshot only for failure
+    if(result?.status == Status.FAILED){
+        const image = await pageFixture.page.screenshot({path: `./test-results/screenshots/${pickle.name}.png`, type:'png'})
+        this.attach(image, 'image/png')
+    }
+    await page.close();
+    await context.close();
+})
+
+multiple-cucumber-html-reporter (has much more details that simple html report)->
+npm i -D multiple-cucumber-html-reporter
+add in cucumber.json ->
+"format": [
+            "html:test-results/report/cucumber-report.html",
+            "json:test-results/report_advanced/cucumber-report.json"
+        ]
+add reportGenerator.ts ->
+const report = require('multiple-cucumber-html-reporter');
+ 
+report.generate({
+    jsonDir: './test-results/report_advanced/',
+    reportPath: './test-results/report_advanced/',
+    metadata:{
+        browser: {
+            name: 'chrome',
+            version: '60'
+        },
+        device: 'Local test machine',
+        platform: {
+            name: 'ubuntu',
+            version: '16.04'
+        }
+    }
+});

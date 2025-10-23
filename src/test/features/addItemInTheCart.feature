@@ -1,7 +1,11 @@
-Feature: Adding Item in the Cart
-Scenario: Changing Password
+Feature: Adding Product Functionality
+
+Scenario Outline: validating added Product in the cart
 Given I am on the login page
 When I login with the valid credentials
-And I add "Sauce Labs Backpack" in the cart
+And I add "<product>" in the cart
 And I go to the cart page
 Then I validate the cart
+Examples:
+    | product |
+    | Sauce Labs Backpack |
