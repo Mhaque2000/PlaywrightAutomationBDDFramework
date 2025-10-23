@@ -12,7 +12,7 @@ This project is a **Playwright + Cucumber BDD Automation Framework** built using
 npm init playwright@latest
 npm install --save-dev @cucumber/cucumber ts-node multiple-cucumber-html-reporter mkdirp rimraf
 ```
-2. Project Structure
+### 2. Project Structure
 ```bash
 project-root/
 ├─ src/
@@ -26,8 +26,8 @@ project-root/
 ├─ package.json
 └─ test-results/         # Reports & screenshots
 ```
-⚙ Configuration
-1. cucumber.json
+## ⚙ Configuration
+### 1. cucumber.json
 ```bash
 {
   "default": {
@@ -43,7 +43,7 @@ project-root/
 ```
 Note: Cucumber runs JS files, so ts-node is required to compile TypeScript on the fly.
 
-3. tsconfig.json
+### 2. tsconfig.json
 ```bash
 {
   "compilerOptions": {
@@ -52,7 +52,7 @@ Note: Cucumber runs JS files, so ts-node is required to compile TypeScript on th
   }
 }
 ```
-5. VS Code Cucumber Settings (Optional)
+### 3. VS Code Cucumber Settings (Optional)
 ```bash
 "cucumber.features": ["src/test/feature/*.feature"],
 "cucumber.glue": ["src/test/steps/*.ts"],
@@ -60,7 +60,7 @@ Note: Cucumber runs JS files, so ts-node is required to compile TypeScript on th
 "cucumberautocomplete.syncfeatures": true
 ```
 
-🧪 Hooks & Screenshots
+## 🧪 Hooks & Screenshots
 
 Add a hooks.ts file to capture screenshots on failure:
 ```bash
@@ -76,12 +76,12 @@ After(async function({ pickle, result }) {
   await context.close();
 });
 ```
-📊 Reporting
-1. Simple HTML Report
+## 📊 Reporting
+### 1. Simple HTML Report
 ```bash
 "format": ["html:test-results/report/cucumber-report.html"]
 ```
-3. Advanced Multiple Cucumber HTML Report
+### 2. Advanced Multiple Cucumber HTML Report
 
 Install:
 ```bash
@@ -116,13 +116,13 @@ report.generate({
     }
 });
 ```
-🚀 Running Tests
+## 🚀 Running Tests
 ```
 npm test
 ```
 This runs pretest (clean), executes Cucumber tests, and generates reports automatically.
 
-⚙ GitHub Actions Workflow
+## ⚙ GitHub Actions Workflow
 This CI/CD pipeline runs tests and deploys the report to GitHub Pages:
 ```bash
 name: Cucumber Tests
