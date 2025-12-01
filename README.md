@@ -1,171 +1,165 @@
-# Playwright BDD Automation Framework
+# Optimized Playwright BDD Framework with Page Object Model
 
-This project is a **Playwright + Cucumber BDD Automation Framework** built using TypeScript. It includes feature files, step definitions, hooks, and multiple reporting options including HTML and advanced multiple-cucumber HTML reports. The framework is CI/CD ready with **GitHub Actions**.
+## 📁 New Project Structure
 
----
-
-## 📦 Project Setup
-
-### 1. Initialize the project
-```
-npm init playwright@latest
-npm install --save-dev @cucumber/cucumber ts-node multiple-cucumber-html-reporter mkdirp rimraf
-```
-### 2. Project Structure
 ```
 project-root/
-├─ src/
-│  └─ test/
-│     ├─ features/       # Feature files
-│     └─ steps/          # Step definition files
-├─ hooks/
-│  └─ hooks.ts           # Cucumber hooks (before/after scenarios)
-├─ cucumber.json         # Cucumber configuration
-├─ tsconfig.json         # TypeScript configuration
-├─ package.json
-└─ test-results/         # Reports & screenshots
-```
-## ⚙ Configuration
-### 1. cucumber.json
-```
-{
-  "default": {
-    "paths": ["./src/test/**/features"],
-    "require": ["./src/test/steps/**/*.ts", "./src/hooks/hooks.ts"],
-    "requireModule": ["ts-node/register"],
-    "format": [
-      "html:test-results/report/cucumber-report.html",
-      "json:test-results/report_advanced/cucumber-report.json"
-    ]
-  }
-}
-```
-Note: Cucumber runs JS files, so ts-node is required to compile TypeScript on the fly.
-
-### 2. tsconfig.json
-```
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node"
-  }
-}
-```
-### 3. VS Code Cucumber Settings (Optional)
-```
-"cucumber.features": ["src/test/feature/*.feature"],
-"cucumber.glue": ["src/test/steps/*.ts"],
-"cucumberautocomplete.steps": ["src/test/steps/**/*.ts"],
-"cucumberautocomplete.syncfeatures": true
+├── src/
+│   ├── pages/                    # Page Object Model classes
+│   │   ├── LoginPage.ts
+│   │   ├── InventoryPage.ts
+│   │   ├── CartPage.ts
+│   │   └── PageManager.ts        # Centralized page access
+│   ├── test/
+│   │   ├── features/             # Feature files
+│   │   │   ├── login.feature
+│   │   │   └── addItemInTheCart.feature
+│   │   └── steps/                # Step definitions
+│   │       ├── loginSteps.ts
+│   │       └── addItemInTheCart.ts
+│   ├── hooks/
+│   │   ├── hooks.ts              # Cucumber hooks
+│   │   └── pageFixture.ts        # Page fixture
+│   ├── helper/
+│   │   ├── reportGenerate.ts     # Report generation
+│   │   └── testData.ts           # Centralized test data
+│   └── config/                   # Configuration files (optional)
+├── test-results/
+│   ├── screenshots/
+│   ├── videos/
+│   ├── report/
+│   └── report_advanced/
+├── .github/
+│   └── workflows/
+│       └── cucumber.yml
+├── cucumber.json
+├── tsconfig.json
+├── package.json
+└── README.md
 ```
 
-## 🧪 Hooks & Screenshots
+## ✨ Key Improvements
 
-Add a hooks.ts file to capture screenshots on failure:
-```
-After(async function({ pickle, result }) {
-  if (result?.status === Status.FAILED) {
-    const image = await pageFixture.page.screenshot({
-      path: `./test-results/screenshots/${pickle.name}.png`,
-      type: 'png'
-    });
-    await this.attach(image, 'image/png');
-  }
-  await page.close();
-  await context.close();
-});
-```
-## 📊 Reporting
-### 1. Simple HTML Report
-```=
-"format": ["html:test-results/report/cucumber-report.html"]
-```
-### 2. Advanced Multiple Cucumber HTML Report
+### 1. **Page Object Model Implementation**
+   - Separated page elements and actions into dedicated classes
+   - Each page has its own class with locators and methods
+   - Better maintainability and reusability
 
-Install:
-```
-npm install --save-dev multiple-cucumber-html-reporter
-```
-Create reportGenerate.ts:
-```
-const report = require('multiple-cucumber-html-reporter');
-const path = require('path');
+### 2. **PageManager Pattern**
+   - Centralized access to all page objects
+   - Single initialization point
+   - Easier to manage dependencies
 
-report.generate({
-    jsonDir: path.join(__dirname, '..', '..', 'test-results'), // folder with cucumber JSON output
-    reportPath: path.join(__dirname, '..', '..', 'test-results', 'report_advanced'),
-    metadata: {
-        browser: {
-            name: 'chromium',    // Playwright default browser
-            version: 'latest'    // version doesn’t need to match exactly
-        },
-        device: 'GitHub Actions runner',
-        platform: {
-            name: 'ubuntu',
-            version: process.platform // optional, can leave as '22.04'
-        }
-    },
-    customData: {
-        title: 'Project Info',
-        data: [
-            { label: 'Project', value: 'Project 2' },
-            { label: 'Release', value: '1.0.0' },
-            { label: 'Cycle', value: 'GitHub Actions CI' },
-        ]
-    }
-});
-```
-## 🚀 Running Tests
-```
+### 3. **Optimized Hooks**
+   - Better browser configuration
+   - Conditional video recording (CI only)
+   - Enhanced screenshot capture with timestamps
+   - Full-page screenshots for better debugging
+
+### 4. **Test Data Management**
+   - Centralized test data in `testData.ts`
+   - Easy to maintain and update
+   - Supports multiple environments
+
+### 5. **Enhanced Scripts**
+   - Added parallel execution support
+   - Tag-based test execution
+   - Headed mode for debugging
+   - Better directory structure creation
+
+## 🚀 Usage
+
+### Run all tests
+```bash
 npm test
 ```
-This runs pretest (clean), executes Cucumber tests, and generates reports automatically.
 
-## ⚙ GitHub Actions Workflow
-This CI/CD pipeline runs tests and deploys the report to GitHub Pages:
+### Run tests in headed mode (visible browser)
+```bash
+npm run test:headed
 ```
-name: Cucumber Tests
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install Playwright Browsers
-        run: npx playwright install
-
-      - name: Run Cucumber Tests
-        run: npm test
-
-      - name: Deploy Cucumber Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./test-results/report_advanced
-          publish_branch: gh-pages
+### Run tests in parallel
+```bash
+npm run test:parallel
 ```
-After the workflow completes, the advanced report will be viewable in the browser at:
-https://<username>.github.io/<repo-name>/
 
-⚡ Notes
-Ensure GH_PAT secret is added to your repository (Personal Access Token with repo scope).
-Screenshots are automatically attached for failed scenarios.
-Reports are generated in the test-results/ folder.
-multiple-cucumber-html-reporter provides detailed analytics like scenario duration, tags, and screenshots.
+### Run specific tests by tag
+```bash
+npm run test:tags @smoke
+```
+
+## 📝 Migration Steps
+
+1. **Create the new folder structure:**
+   ```bash
+   mkdir -p src/pages src/helper/config
+   ```
+
+2. **Copy the page object files** to `src/pages/`:
+   - LoginPage.ts
+   - InventoryPage.ts
+   - CartPage.ts
+   - PageManager.ts
+
+3. **Create test data file** at `src/helper/testData.ts`
+
+4. **Update step definitions** to use PageManager
+
+5. **Update hooks.ts** with the optimized version
+
+6. **Update package.json** with new scripts
+
+## 🎯 Best Practices Implemented
+
+1. **Single Responsibility**: Each page class handles only its own elements
+2. **DRY Principle**: Reusable methods across tests
+3. **Type Safety**: TypeScript for better code quality
+4. **Encapsulation**: Private locators, public methods
+5. **Maintainability**: Easy to update selectors in one place
+6. **Scalability**: Easy to add new pages and features
+
+## 🔧 Configuration Options
+
+### Browser Settings (hooks.ts)
+- Headless mode: Toggle with environment variable
+- Viewport: 1920x1080 for consistent testing
+- Video recording: Enabled only in CI
+
+### Cucumber Settings (cucumber.json)
+- Feature paths
+- Step definition paths
+- Report formats
+
+### Test Data (testData.ts)
+- User credentials
+- URLs
+- Product names
+- Error messages
+
+## 📊 Reporting
+
+### Simple HTML Report
+- Generated at: `test-results/report/cucumber-report.html`
+
+### Advanced Report
+- Generated at: `test-results/report_advanced/index.html`
+- Includes screenshots, metadata, and detailed analytics
+
+## 🎨 Advantages of This Structure
+
+1. **Easy Maintenance**: Change selectors in one place
+2. **Better Readability**: Clear separation of concerns
+3. **Faster Development**: Reusable page methods
+4. **Easy Testing**: Mock page objects for unit tests
+5. **Team Collaboration**: Clear structure for multiple developers
+6. **CI/CD Ready**: Optimized for automated pipelines
+
+## 🔄 Next Steps
+
+1. Add more page objects as needed
+2. Implement custom assertions
+3. Add API testing support
+4. Create shared utilities
+5. Add environment-specific configurations
+6. Implement retry logic for flaky tests
