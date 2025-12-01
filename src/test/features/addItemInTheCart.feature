@@ -1,6 +1,6 @@
 Feature: Adding Product Functionality
 
-Scenario Outline: validating added Product in the cart
+Scenario Outline: Validating added product in the cart
 Given I am on the login page
 When I login with the valid credentials
 And I add "<product>" in the cart

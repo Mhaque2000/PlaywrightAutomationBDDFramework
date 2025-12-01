@@ -1,17 +1,19 @@
 {
-  "name": "project_2",
+  "name": "playwright-bdd-pom",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright BDD Automation Framework with Page Object Model",
   "main": "index.js",
   "scripts": {
-    "clean:test": "rimraf test-results && mkdirp test-results",
-    "generate:report": "npx ts-node ./src/helper/reportGenerate.ts",
+    "clean:test": "rimraf test-results && mkdirp test-results/screenshots test-results/videos",
+    "generate:report": "ts-node ./src/helper/reportGenerate.ts",
     "pretest": "npm run clean:test",
     "posttest": "npm run generate:report",
     "execute:script": "cucumber-js test",
-    "test": "npm run execute:script || posttest"
+    "test": "npm run execute:script || npm run posttest",
+    "test:headed": "HEADLESS=false cucumber-js test",
+    "test:parallel": "cucumber-js test --parallel 3"
   },
-  "keywords": [],
+  "keywords": ["playwright", "cucumber", "bdd", "automation", "testing", "page-object-model"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",

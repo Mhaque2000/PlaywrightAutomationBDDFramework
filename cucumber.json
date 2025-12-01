@@ -1,13 +1,14 @@
 {
-    "default":
-    {
-        "paths": ["./src/test/**/features"],
-        "require": ["./src/test/steps/**/*.ts",
-                    "./src/hooks/hooks.ts"],
-        "requireModule": ["ts-node/register"],
-        "format": [
-            "html:test-results/report/cucumber-report.html",
-            "json:test-results/report_advanced/cucumber-report.json"
-        ]
+  "default": {
+    "paths": ["./src/test/**/features"],
+    "require": ["./src/test/steps/**/*.ts", "./src/hooks/hooks.ts"],
+    "requireModule": ["ts-node/register"],
+    "format": [
+      "html:test-results/report/cucumber-report.html",
+      "json:test-results/report_advanced/cucumber-report.json"
+    ],
+    "formatOptions": {
+      "snippetInterface": "async-await"
     }
+  }
 }

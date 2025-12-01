@@ -2,25 +2,28 @@ const report = require('multiple-cucumber-html-reporter');
 const path = require('path');
 
 report.generate({
-    jsonDir: path.join(__dirname, '..', '..', 'test-results'), // folder with cucumber JSON output
+    jsonDir: path.join(__dirname, '..', '..', 'test-results', 'report_advanced'),
     reportPath: path.join(__dirname, '..', '..', 'test-results', 'report_advanced'),
     metadata: {
         browser: {
-            name: 'chromium',    // Playwright default browser
-            version: 'latest'    // version doesn’t need to match exactly
+            name: 'chromium',
+            version: 'latest'
         },
-        device: 'GitHub Actions runner',
+        device: 'Local test machine',
         platform: {
             name: 'ubuntu',
-            version: process.platform // optional, can leave as '22.04'
+            version: process.platform
         }
     },
     customData: {
         title: 'Project Info',
         data: [
-            { label: 'Project', value: 'Project 2' },
+            { label: 'Project', value: 'Playwright BDD POM Framework' },
             { label: 'Release', value: '1.0.0' },
-            { label: 'Cycle', value: 'GitHub Actions CI' },
+            { label: 'Cycle', value: 'Automated Testing' },
+            { label: 'Execution Time', value: new Date().toLocaleString() }
         ]
     }
 });
+
+console.log('✅ Advanced HTML report generated successfully!');
