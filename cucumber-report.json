@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 38238456
+              "duration": 37227549
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 346494094
+              "duration": 328749806
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 147479709
+              "duration": 137936414
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 55616852
+              "duration": 39569201
             }
           },
           {
@@ -66,8 +66,8 @@
             },
             "result": {
               "status": "failed",
-              "duration": 30002744328,
-              "error_message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-icon=\"shopping-cart\"]')\n\n    at InventoryPage.goToCart (/home/runner/work/PlaywrightAutomationBDDFramework/PlaywrightAutomationBDDFramework/src/test/pages/InventoryPage.ts:32:29)\n    at World.<anonymous> (/home/runner/work/PlaywrightAutomationBDDFramework/PlaywrightAutomationBDDFramework/src/test/steps/addItemInTheCart.ts:16:37)"
+              "duration": 30003665133,
+              "error_message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-icon=\"shopping-cart\"]')\n\n    at InventoryPage.goToCart (/home/runner/work/PlaywrightAutomationBDDFramework/PlaywrightAutomationBDDFramework/src/pages/InventoryPage.ts:32:29)\n    at World.<anonymous> (/home/runner/work/PlaywrightAutomationBDDFramework/PlaywrightAutomationBDDFramework/src/test/steps/addItemInTheCart.ts:16:37)"
             }
           },
           {
@@ -88,7 +88,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1598165765
+              "duration": 1625031948
             },
             "embeddings": [
               {
@@ -124,7 +124,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 25615251
+              "duration": 25254500
             }
           },
           {
@@ -137,7 +137,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 210017134
+              "duration": 222317472
             }
           },
           {
@@ -150,7 +150,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 133747481
+              "duration": 115219826
             }
           },
           {
@@ -163,7 +163,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51512799
+              "duration": 63404929
             }
           },
           {
@@ -176,7 +176,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 905724131
+              "duration": 893656117
             }
           },
           {
@@ -189,7 +189,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 2638175,
+              "duration": 2706851,
               "error_message": "Error: expect(received).toBeTruthy()\n\nReceived: false\n    at Proxy.<anonymous> (/home/runner/work/PlaywrightAutomationBDDFramework/PlaywrightAutomationBDDFramework/node_modules/playwright/lib/matchers/expect.js:221:24)\n    at World.<anonymous> (/home/runner/work/PlaywrightAutomationBDDFramework/PlaywrightAutomationBDDFramework/src/test/steps/loginSteps.ts:41:51)"
             }
           },
@@ -198,7 +198,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 102346743
+              "duration": 100269342
             },
             "embeddings": [
               {
@@ -223,7 +223,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 24599401
+              "duration": 25607568
             }
           },
           {
@@ -236,7 +236,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 214733077
+              "duration": 227792891
             }
           },
           {
@@ -249,7 +249,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106572220
+              "duration": 105111852
             }
           },
           {
@@ -262,7 +262,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4546390
+              "duration": 10667349
             }
           },
           {
@@ -270,7 +270,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 23280672
+              "duration": 19950430
             }
           }
         ],
@@ -289,7 +289,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 25150813
+              "duration": 25803040
             }
           },
           {
@@ -302,7 +302,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 214625278
+              "duration": 225837905
             }
           },
           {
@@ -315,7 +315,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 68961445
+              "duration": 76955824
             }
           },
           {
@@ -328,7 +328,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4216026
+              "duration": 4191274
             }
           },
           {
@@ -336,7 +336,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 44320737
+              "duration": 22295683
             }
           }
         ],
